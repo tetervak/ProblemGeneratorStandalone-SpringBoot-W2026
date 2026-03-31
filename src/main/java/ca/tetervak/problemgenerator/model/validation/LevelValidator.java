@@ -13,6 +13,10 @@ public class LevelValidator implements ConstraintValidator<ValidLevel, String> {
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return DifficultyLevel.fromString(s) != DifficultyLevel.UNKNOWN;
+        try{
+            return DifficultyLevel.fromString(s) != DifficultyLevel.UNKNOWN;
+        } catch (IllegalArgumentException e){
+            return false;
+        }
     }
 }
