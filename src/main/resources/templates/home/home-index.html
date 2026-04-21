@@ -6,65 +6,38 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
     <link rel="stylesheet" th:href="@{/css/header.css}" href="../../static/css/header.css">
-    <title th:text="#{index-label}">Index</title>
+    <title>Index</title>
 </head>
 <body>
 <header th:fragment="home-header">
-    <div class="row-in-header">
-        <div class="spacer-in-header"></div>
-        <h1 th:text="${#messages.msg('app-name')}">Program Name</h1>
-        <div th:fragment="language-bar" class="language-bar-container">
-            <div class="language-bar">
-                <th:block th:each="langCode : ${#strings.arraySplit(#messages.msg('supported.locales'), ',')}">
-                    <a th:href="${@linkHelper.withLang(langCode)}"
-                       class="lang-link"
-                       th:classappend="${#locale.language == langCode} ? 'active-lang' : ''"
-                       th:text="${#strings.toUpperCase(langCode)}">
-                        EN
-                    </a>
-                </th:block>
-            </div>
-        </div>
-    </div>
+    <h1>Problem Generator</h1>
 </header>
 <main>
-    <h2 th:text="#{index-label}">Index</h2>
+    <h2>Index</h2>
     <ul>
         <li>
-            <a th:href="@{/problems}"
-               th:text="#{problems-label}">Problems</a>
+            <a th:href="@{/problems}">Problems</a>
             <ul>
                 <li>
-                    <a th:href="@{/problems/categories}"
-                       th:text="#{categories-label}">Categories</a>
+                    <a th:href="@{/problems/categories}">Categories</a>
                     <ol>
-                        <li><a th:href="@{/problems/categories/addition}"
-                               th:text="#{'category-label.addition'}">Addition</a></li>
-                        <li><a th:href="@{/problems/categories/subtraction}"
-                               th:text="#{'category-label.subtraction'}">Subtraction</a></li>
-                        <li><a th:href="@{/problems/categories/multiplication}"
-                               th:text="#{'category-label.multiplication'}">Multiplication</a></li>
-                        <li><a th:href="@{/problems/categories/division}"
-                               th:text="#{'category-label.division'}">Division</a></li>
+                        <li><a th:href="@{/problems/categories/addition}">Addition</a></li>
+                        <li><a th:href="@{/problems/categories/subtraction}">Subtraction</a></li>
+                        <li><a th:href="@{/problems/categories/multiplication}">Multiplication</a></li>
+                        <li><a th:href="@{/problems/categories/division}">Division</a></li>
                     </ol>
                 </li>
-                <li><a th:href="@{/problems/form}"
-                       th:text="#{request-form}">Request Form</a></li>
+                <li><a th:href="@{/problems/form}">Request Form</a></li>
             </ul>
         </li>
         <li>
-            <a th:href="@{/about}" th:text="#{about-label}">About the program</a>
+            <a th:href="@{/about}">About the program</a>
         </li>
     </ul>
 </main>
 <footer th:fragment="course-footer">
     <p>
-        PROG27545 / Web Application Design and Implementation — Sheridan College,
-        <th:block th:switch="${#locale.language}">
-            <span th:case="'uk'">Олександр Тетервак</span>
-            <span th:case="'ru'">Александр Тетервак</span>
-            <span th:case="*">Alexander Tetervak</span>
-        </th:block>
+        PROG27545 / Web Application Design and Implementation — Sheridan College, Alexander Tetervak
     </p>
 </footer>
 </body>

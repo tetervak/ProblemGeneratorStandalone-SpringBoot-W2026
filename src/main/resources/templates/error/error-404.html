@@ -6,17 +6,16 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
     <link rel="stylesheet" th:href="@{/css/header.css}" href="../../static/css/header.css">
-    <title th:text="#{error-label}">Error</title>
+    <title>Error</title>
 </head>
 <body>
 <header th:replace="~{home/home-index :: home-header}">Some Header</header>
 <main>
     <p>
-        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
-        <th:block th:text="#{error-label}">Error</th:block>&nbsp;404
+        <a th:href="@{/index}">Index</a>&nbsp;&#10219&nbsp;Error&nbsp;404
     </p>
-    <h2><th:block th:text="#{error-label}">Error</th:block>&nbsp;404</h2>
-    <p class="error-message" th:text="#{error-404-message}">
+    <h2>Error&nbsp;404</h2>
+    <p class="error-message">
         The page is not found.
     </p>
 

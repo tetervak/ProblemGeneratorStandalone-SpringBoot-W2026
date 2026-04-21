@@ -6,21 +6,20 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../static/css/main.css">
     <link rel="stylesheet" th:href="@{/css/header.css}" href="../../../static/css/header.css">
-    <title th:text="#{categories-label}">Categories</title>
+    <title>Categories</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
 <main>
     <p>
-        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}" th:text="#{problems-label}">Problems</a>&nbsp;&#10219&nbsp;
-        <th:block th:text="#{categories-label}">Categories</th:block>
+        <a th:href="@{/index}">Index</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;Categories
     </p>
-    <h2 th:text="#{categories-label}">Categories</h2>
+    <h2>Categories</h2>
     <ol>
         <li th:each="category: ${categories}">
             <a th:href="@{/problems/categories/{c}(c=${category})}"
-               th:text="#{'category-label.' + ${category}}">Specific Category</a>
+               th:text="${#strings.capitalize(category)}">Specific Category</a>
         </li>
     </ol>
 </main>

@@ -15,16 +15,7 @@ public class HomeController {
     }
 
     @GetMapping("/about")
-    public ModelAndView about(Locale locale) {
-
-        ModelAndView mav = new ModelAndView();
-        String language = locale.getLanguage();
-        switch (language) {
-            case "uk" -> mav.setViewName("home/home-about_uk");
-            case "ru" -> mav.setViewName("home/home-about_ru");
-            default -> mav.setViewName("home/home-about");
-        }
-
-        return mav;
+    public String about(Locale locale) {
+        return "home/home-about";
     }
 }
