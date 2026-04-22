@@ -1,19 +1,11 @@
-body>footer{
-    padding-top: 0;
-}
 
 footer{
     font-style: italic;
-    width: 100%;
 }
 
 label{
-    font-size: x-large;
+    font-size: large;
     width: fit-content;
-}
-
-li{
-    font-size: x-large;
 }
 
 .value{
@@ -25,7 +17,7 @@ li{
 .error-message{
     color: crimson;
     font-style: italic;
-    font-size: x-large;
+    font-size: large;
 }
 
 /* Language Selection Bar */

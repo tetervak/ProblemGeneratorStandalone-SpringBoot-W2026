@@ -1,69 +1,83 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../static/css/main.css">
-    <link rel="stylesheet" th:href="@{/css/header.css}" href="../../../static/css/header.css">
-    <link rel="stylesheet" th:href="@{/css/compare-levels.css}" href="../../../static/css/compare-levels.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
     <title>Compare Levels</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
-<main th:object="${compareForm}">
-    <p>
-        <a th:href="@{/index}">Index</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems/categories}">Categories</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems/categories/{c}(c=${category})}"
-                th:text="${#strings.capitalize(category)}">Specific Category</a>&nbsp;&#10219&nbsp;Compare Levels
-    </p>
-    <h2>
+<main th:object="${compareForm}" class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/index}">Index</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/problems}">Problems</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/problems/categories}">Categories</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/problems/categories/{c}(c=${category})}"
+                th:text="${#strings.capitalize(category)}">Specific Category</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Compare Levels</li>
+        </ol>
+    </nav>
+    <h2 class="mb-4 mb-3">
         <th:block th:text="${#strings.capitalize(category)}">Specific Category</th:block>:&nbsp;Compare Levels
     </h2>
     <form th:action="@{/problems/categories/{c}/compare-levels(c=${category})}"
           method="get">
-        <p>
-            <label>Level - 1:&nbsp;
-                <select name="firstLevel" th:field="${compareForm.left}">
+        <div class="row mb-3 align-items-baseline">
+            <div class="col-auto">
+                <label for="first-level-input" class="form-label">Level - 1:</label>
+            </div>
+            <div class="col-auto">
+                <select id="first-level-input" name="firstLevel" th:field="${compareForm.left}" class="form-select">
                     <option th:each="level: ${levels}"
                             th:value="${level}"
                             th:text="${#strings.capitalize(level)}">
                         Difficulty Level
                     </option>
                 </select>
-            </label>
-        </p>
-        <p>
-            <label>Level - 2:&nbsp;
-                <select name="secondLevel" th:field="${compareForm.right}">
+            </div>
+        </div>
+        <div class="row mb-3 align-items-baseline">
+            <div class="col-auto">
+                <label for="second-level-input" class="form-label">Level - 2:</label>
+            </div>
+            <div class="col-auto">
+                <select id="second-level-input" name="secondLevel" th:field="${compareForm.right}" class="form-select">
                     <option th:each="level: ${levels}"
                             th:value="${level}"
                             th:text="${#strings.capitalize(level)}">
                         Difficulty Level
                     </option>
                 </select>
-            </label>
-        </p>
-        <p>
-            <label>Number of Problems:&nbsp;
-                <input type="number" name="number" th:field="${compareForm.number}" min="1" max="10">
-            </label>
-        </p>
-        <p>
-            <button type="submit">Compare Levels</button>
-        </p>
+            </div>
+        </div>
+        <div class="row mb-3 align-items-baseline">
+            <div class="col-auto">
+                <label for="number-of-problems-input" class="form-label">Number of Problems:</label>
+            </div>
+            <div class="col-auto">
+                <input id="number-of-problems-input"
+                       type="number"
+                       name="number"
+                       th:field="${compareForm.number}"
+                       min="1" max="10" step="1"
+                       class="form-control">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary my-3">Compare Levels</button>
     </form>
-    <article class="compare-output-container">
-        <div class="header-and-table-container">
+    <div class="d-flex mt-4 gap-4 flex-wrap">
+        <div>
             <h4>
                 <th:block>Level</th:block> - 1:&nbsp;
                 <th:block th:text="${#strings.capitalize(compareForm.left)}">Level</th:block>
             </h4>
-            <table>
+            <table class="table table-striped table-bordered w-auto">
                 <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th>Count</th>
                         <th>Problem</th>
                         <th>Answer</th>
@@ -78,14 +92,14 @@
                 </tbody>
             </table>
         </div>
-        <div class="header-and-table-container">
+        <div>
             <h4>
                 <th:block>Level</th:block> - 2:&nbsp;
                 <th:block th:text="${#strings.capitalize(compareForm.right)}">Level</th:block>
             </h4>
-            <table>
+            <table class="table table-striped table-hover table-bordered w-auto">
                 <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th>Count</th>
                         <th>Problem</th>
                         <th>Answer</th>
@@ -100,7 +114,7 @@
                 </tbody>
             </table>
         </div>
-    </article>
+    </div>
 </main>
 <footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>
 </body>

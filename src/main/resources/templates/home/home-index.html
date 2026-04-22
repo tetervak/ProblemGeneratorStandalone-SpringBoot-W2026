@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
-    <link rel="stylesheet" th:href="@{/css/header.css}" href="../../static/css/header.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
     <title>Index</title>
 </head>
 <body>
-<header th:fragment="home-header">
+<header th:fragment="home-header" class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
     <h1 th:text="#{app-header-name}">Problem Generator</h1>
 </header>
-<main>
-    <h2>Index</h2>
-    <ul>
-        <li>
+<main class="container">
+    <h2 class="mt-4 mb-2">Index</h2>
+    <ul style="font-size: large;" class="ms-4">
+        <li class="mb-2">
             <a th:href="@{/problems}">Problems</a>
-            <ul>
-                <li>
+            <ul class="mt-2">
+                <li class="mb-2">
                     <a th:href="@{/problems/categories}">Categories</a>
-                    <ol>
-                        <li><a th:href="@{/problems/categories/addition}">Addition</a></li>
-                        <li><a th:href="@{/problems/categories/subtraction}">Subtraction</a></li>
-                        <li><a th:href="@{/problems/categories/multiplication}">Multiplication</a></li>
-                        <li><a th:href="@{/problems/categories/division}">Division</a></li>
+                    <ol class="mt-2">
+                        <li class="mb-2"><a th:href="@{/problems/categories/addition}">Addition</a></li>
+                        <li class="mb-2"><a th:href="@{/problems/categories/subtraction}">Subtraction</a></li>
+                        <li class="mb-2"><a th:href="@{/problems/categories/multiplication}">Multiplication</a></li>
+                        <li class="mb-2"><a th:href="@{/problems/categories/division}">Division</a></li>
                     </ol>
                 </li>
                 <li><a th:href="@{/problems/form}">Request Form</a></li>
@@ -35,10 +35,8 @@
         </li>
     </ul>
 </main>
-<footer th:fragment="course-footer">
-    <p>
-        PROG27545 / Web Application Design and Implementation — Sheridan College, Alexander Tetervak
-    </p>
+<footer th:fragment="course-footer" class="container d-flex flex-wrap justify-content-center py-3 mt-4 border-top">
+        <div>PROG27545 / Web Application Design and Implementation</div> <div>&nbsp;—&nbsp;</div> <div>Sheridan College, Alexander Tetervak</div>
 </footer>
 </body>
 </html>

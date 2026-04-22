@@ -29,9 +29,16 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
+    // Source: https://mvnrepository.com/artifact/org.webjars/bootstrap
+    implementation("org.webjars:bootstrap:5.3.8")
+
+    // Source: https://mvnrepository.com/artifact/org.webjars/webjars-locator-lite
+    implementation("org.webjars:webjars-locator-lite:1.1.3")
+
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.projectlombok:lombok")
+
     testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 }

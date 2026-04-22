@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../static/css/main.css">
-    <link rel="stylesheet" th:href="@{/css/header.css}" href="../../../static/css/header.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
     <title>Categories</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
-<main>
-    <p>
-        <a th:href="@{/index}">Index</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;Categories
-    </p>
-    <h2>Categories</h2>
-    <ol>
-        <li th:each="category: ${categories}">
+<main class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/index}">Index</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/problems}">Problems</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Categories</li>
+        </ol>
+    </nav>
+    <h2 class="mt-4 mb-2">Categories</h2>
+    <ol style="font-size: large;" class="ms-4">
+        <li th:each="category: ${categories}" class="mb-2">
             <a th:href="@{/problems/categories/{c}(c=${category})}"
                th:text="${#strings.capitalize(category)}">Specific Category</a>
         </li>

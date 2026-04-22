@@ -2,21 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../static/css/main.css">
-    <link rel="stylesheet" th:href="@{/css/header.css}" href="../../../static/css/header.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
     <title>Confirm Request</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
-<main th:object="${requestForm}">
-    <p>
-        <a th:href="@{/index}">Index</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems/form}">Request Form</a>&nbsp;&#10219&nbsp;Confirm Request
-    </p>
-    <h2>Confirm Request</h2>
+<main th:object="${requestForm}" class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/index}">Index</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/problems}">Problems</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/problems/form}">Request Form</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Confirm Request</li>
+        </ol>
+    </nav>
+    <h2 class="mt-4 mb-3">Confirm Request</h2>
     <ul>
         <li>
             <label>Category:
@@ -41,7 +45,7 @@
         </li>
     </ul>
     <p>
-        <a style="font-size: x-large"
+        <a style="font-size: large"
            th:href="@{/problems/form(category=${requestForm.category}, level=${requestForm.level}, number=${requestForm.number})}">
             Edit Request
         </a>
@@ -50,7 +54,7 @@
         <input type="hidden" name="category" th:value="${requestForm.category}">
         <input type="hidden" name="level" th:value="${requestForm.level}">
         <input type="hidden" name="number" th:value="${requestForm.number}">
-        <button type="submit">Confirm Request</button>
+        <button type="submit" class="btn btn-primary mt-3">Confirm Request</button>
     </form>
 </main>
 <footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>

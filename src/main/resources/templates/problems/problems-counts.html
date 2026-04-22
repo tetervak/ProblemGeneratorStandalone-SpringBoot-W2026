@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
-    <link rel="stylesheet" th:href="@{/css/header.css}" href="../../static/css/header.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
     <title>Problem Counts</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
-<main>
-    <p>
-        <a th:href="@{/index}">Index</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;Problem Counts
-    </p>
-    <h2>Problem Counts</h2>
-    <table>
+<main class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/index}">Index</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/problems}">Problems</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Problem Counts</li>
+        </ol>
+    </nav>
+    <h2 class="mt-4 mb-3">Problem Counts</h2>
+    <table class="table table-striped table-bordered w-auto">
         <thead>
-        <tr>
+        <tr class="table-primary">
             <th>Difficulty Level</th>
             <th th:each="category: ${categories}"
                 th:text="${#strings.capitalize(category)}">Category
@@ -30,13 +33,13 @@
         <tr th:each="level: ${levels}">
             <td th:text="${#strings.capitalize(level)}">Level</td>
             <td th:each="category: ${categories}"
-                th:text="${counts.getCountByCategoryAndLevel(category, level)}">count
+                th:text="${counts.getCountByCategoryAndLevel(category, level)}" class="text-center">count
             </td>
         </tr>
         <tr>
             <th>Totals</th>
             <th th:each="category: ${categories}"
-                th:text="${counts.getTotalByCategory(category)}">Total
+                th:text="${counts.getTotalByCategory(category)}" class="text-center">Total
             </th>
         </tr>
         </tbody>

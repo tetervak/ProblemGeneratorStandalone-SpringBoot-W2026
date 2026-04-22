@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
-    <link rel="stylesheet" th:href="@{/css/header.css}" href="../../static/css/header.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
     <title>Error</title>
 </head>
 <body>
 <header th:replace="~{home/home-index :: home-header}">Some Header</header>
-<main>
-    <p>
-        <a th:href="@{/index}">Index</a>&nbsp;&#10219&nbsp;Error&nbsp;404
-    </p>
-    <h2>Error&nbsp;404</h2>
+<main class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/index}">Index</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Error&nbsp;404</li>
+        </ol>
+    </nav>
+    <h2 class="mt-4 mb-3">Error&nbsp;404</h2>
     <p class="error-message">
         The page is not found.
     </p>
