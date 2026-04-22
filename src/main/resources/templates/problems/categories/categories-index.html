@@ -16,7 +16,7 @@
         <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;Categories
     </p>
     <h2>Categories</h2>
-    <ol>
+    <ol style="font-size: x-large;">
         <li th:each="category: ${categories}">
             <a th:href="@{/problems/categories/{c}(c=${category})}"
                th:text="${#strings.capitalize(category)}">Specific Category</a>

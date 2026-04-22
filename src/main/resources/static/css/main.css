@@ -12,10 +12,6 @@ label{
     width: fit-content;
 }
 
-li{
-    font-size: x-large;
-}
-
 .value{
     font-style: italic;
     margin-left: 1rem;
