@@ -10,7 +10,7 @@
 </head>
 <body>
 <header th:fragment="problems-header">
-    <h1>Problem Generator</h1>
+    <h1 th:text="#{app-header-name}">Problem Generator</h1>
         <nav style="margin: 0">
             <a th:href="@{/problems/form}">Request Form</a>
             <a th:each="category : ${categories}"
