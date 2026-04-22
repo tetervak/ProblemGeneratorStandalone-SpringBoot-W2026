@@ -19,5 +19,5 @@ The program code demonstrates the following concepts:
 
 There are three major code branches:
 - `main` branch is using Bootstrap 5.3.8
-- `simplest-templates` branch is using [Simple.css Framework](https://simple.css)
+- `simplest-templates` branch is using [Simple.css Framework](https://simplecss.org)
 - `multi-language-ui` branch demonstrates switching UI language and localization
